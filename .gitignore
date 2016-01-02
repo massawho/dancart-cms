@@ -131,3 +131,5 @@ tmtags
 
 # Database
 *.db
+
+.DS_Store
