@@ -1,0 +1,223 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="José Erimá Fernandes Júnior" />
+    {% render_block "meta" %}
+
+	<!-- Stylesheets
+	============================================= -->
+    {% render_block "css" %}
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/colors.css' %}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+
+	<title>Dançart {% block title %}{% endblock %}</title>
+
+</head>
+
+<body class="stretched">
+    {% render_block "js_body" %}
+    {% cms_toolbar %}
+    <!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Top Bar
+        ============================================= -->
+        <div id="top-bar">
+
+            <div class="container clearfix">
+
+                <div class="col_half nobottommargin">
+
+                    <!-- Top Links
+                    ============================================= -->
+                    <div class="top-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div><!-- .top-links end -->
+
+                </div>
+
+                <div class="col_half fright col_last nobottommargin">
+
+                    <!-- Top Social
+                    ============================================= -->
+                    <div id="top-social">
+                        <ul>
+                            <li><a target="_blank" href="https://www.facebook.com/dancart.loja" class="si-facebook"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
+                            <li><a target="_blank" href="https://plus.google.com/105235975175002340801/about" class="si-gplus"><span class="ts-icon"><i class="icon-gplus"></i></span><span class="ts-text">Google+</span></a></li>
+                            <li><a target="_blank" href="https://instagram.com/lojadancart/" class="si-instagram"><span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span></a></li>
+                            <li><a href="skype:dancart?call" class="si-skype"><span class="ts-icon"><i class="icon-skype"></i></span><span class="ts-text">Dançart</span></a></li>
+                            <li><a href="tel:+553135119685" class="si-call"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">(31) 3511-9685</span></a></li>
+                            <li><a href="mailto:contato@lojadancart.com.br" class="si-email3"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">contato@lojadancart.com.br</span></a></li>
+                        </ul>
+                    </div><!-- #top-social end -->
+
+                </div>
+
+            </div>
+
+        </div><!-- #top-bar end -->
+
+        <!-- Header
+		============================================= -->
+		<header id="header" class="sticky-style-2">
+
+			<div class="container clearfix">
+
+				<!-- Logo
+				============================================= -->
+				<div id="logo">
+					<a href="/" class="standard-logo"><img src="{% static 'images/logo.png' %}" alt="Dançart - Artigos de Dança"></a>
+					<a href="/" class="retina-logo"><img src="{% static 'images/logo@2x.png' %}" alt="Dançart - Artigos de Dança"></a>
+				</div><!-- #logo end -->
+
+				<ul class="header-extras">
+					<li>
+						<i class="i-medium i-circled i-bordered icon-thumbs-up2 nomargin"></i>
+						<div class="he-text">
+							Marcas originais
+							<span>100% garantido</span>
+						</div>
+					</li>
+					<li>
+						<i class="i-medium i-circled i-bordered icon-undo nomargin"></i>
+						<div class="he-text">
+							Política de troca
+							<span>Prazo de 30 dias</span>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+
+			<div id="header-wrap">
+
+				<!-- Primary Navigation
+				============================================= -->
+				<nav id="primary-menu" class="style-2">
+
+					<div class="container clearfix">
+
+						<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+						<ul>
+                            {% show_menu_below_id "home" 0 1 1 1 "main_menu.html" %}
+                        </ul>
+
+						<!-- Top Search
+						============================================= -->
+						<div id="top-search">
+							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+							<form action="{% url 'all_products' %}" method="get">
+								<input type="text" name="q" class="form-control" value="" placeholder="Digite &amp; aperte enter para buscar..">
+							</form>
+						</div><!-- #top-search end -->
+
+					</div>
+
+				</nav><!-- #primary-menu end -->
+
+			</div>
+
+		</header><!-- #header end -->
+        <!-- Content
+		============================================= -->
+		<section id="content">
+            {% block content %}{% endblock %}
+        </section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+                    <div class="col_half">
+                        <address>
+                            Rua do Rosário 115, Angola <br> Betim, Minas Gerais
+                        </address>
+                    </div>
+
+					<div class="col_half col_last tright pull-right">
+
+                        <div class="fright clearfix">
+							<a href="https://www.facebook.com/dancart.loja" class="social-icon si-small si-borderless si-facebook">
+								<i class="icon-facebook"></i>
+								<i class="icon-facebook"></i>
+							</a>
+
+							<a href="https://plus.google.com/105235975175002340801/about" class="social-icon si-small si-borderless si-gplus">
+								<i class="icon-gplus"></i>
+								<i class="icon-gplus"></i>
+							</a>
+
+							<a href="https://instagram.com/lojadancart/" class="social-icon si-small si-borderless si-instagram">
+								<i class="icon-instagram"></i>
+								<i class="icon-instagram"></i>
+							</a>
+
+							<a href="skype:dancart?call" class="social-icon si-small si-borderless si-skype">
+								<i class="icon-skype"></i>
+								<i class="icon-skype"></i>
+							</a>
+
+							<a href="tel:+553135119685" class="social-icon si-small si-borderless si-call">
+								<i class="icon-call"></i>
+								<i class="icon-call"></i>
+							</a>
+
+							<a href="mailto:contato@lojadancart.com.br" class="social-icon si-small si-borderless si-email3">
+								<i class="icon-email3"></i>
+								<i class="icon-email3"></i>
+							</a>
+
+						<div class="clear"></div>
+
+						<i class="icon-envelope2"></i> contato@dancart.com.br <span class="middot">&middot;</span> <i class="icon-headphones"></i> (31) 3511-9685 <span class="middot">&middot;</span> <i class="icon-skype2"></i> Dançart
+					</div>
+
+				</div>
+
+			</div><!-- #copyrights end -->
+
+		</footer><!-- #footer end -->
+    </div><!-- #wrapper end -->
+
+
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+    {% render_block "js" %}
+</body>
+</html>

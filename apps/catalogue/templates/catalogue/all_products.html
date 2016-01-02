@@ -1,0 +1,5 @@
+{% extends 'catalogue/product_list.html' %}
+{% load menu_tags %}
+{% block category_menu %}
+	{% show_sub_menu 1 None 100 "category_main_menu.html" %}
+{% endblock %}

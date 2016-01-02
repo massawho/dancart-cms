@@ -1,0 +1,9 @@
+{% if not product.price %}
+    Preço não informado
+{% else %}
+    {% if not product.discount_price %}
+        R${{ product.price }}
+    {% else %}
+            <del>R${{ product.price }}</del> <ins>R${{ product.discount_price }}</ins>
+    {% endif %}
+{% endif %}

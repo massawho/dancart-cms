@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static thumbnail sekizai_tags %}
+{% block content %}
+<div class="content-wrap">
+
+    <div class="container clearfix">
+
+        <div class="single-product">
+
+            <div class="product">
+
+                <div class="col_two_fifth">
+
+                    <!-- Product Single - Gallery
+                    ============================================= -->
+                    <div class="product-image">
+                        <div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
+                            <div class="flexslider">
+                                <div class="slider-wrap" data-lightbox="gallery">
+                                    {% for photo in product.photo_set.all %}
+                                        {% thumbnail photo.file "440x586" crop="center" as im %}
+                                            <div class="slide" data-thumb="images/shop/thumbs/dress/3.jpg"><a href="{{ im.url }}" title="{{ photo.description }}" data-lightbox="gallery-item"><img src="{{ im.url }}" alt="{{ photo.description }}"></a></div>
+                                        {% endthumbnail %}
+                                    {% empty %}
+                                        <img src="{% static 'images/no-image.png' %}" alt="{{ product.description }}">
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% if product.discount_price %}
+                        <div class="sale-flash">Sale!</div>
+                        {% endif %}
+                    </div><!-- Product Single - Gallery End -->
+
+                </div>
+
+                <div class="col_two_fifth product-desc">
+
+                    <!-- Product Single - Price
+                    ============================================= -->
+                    <div class="product-price">
+                        {% include 'catalogue/_product_price.html' with product=product %}
+                    </div><!-- Product Single - Price End -->
+
+                    <div class="clear"></div>
+                    <div class="line"></div>
+
+                    <!-- Product Single - Short Description
+                    ============================================= -->
+                    {{ product.description | linebreaks }}
+{#                    <ul class="iconlist">#}
+{#                        <li><i class="icon-caret-right"></i> Dynamic Color Options</li>#}
+{#                        <li><i class="icon-caret-right"></i> Lots of Size Options</li>#}
+{#                        <li><i class="icon-caret-right"></i> 30-Day Return Policy</li>#}
+{#                    </ul><!-- Product Single - Short Description End -->#}
+
+                    <!-- Product Single - Meta
+                    ============================================= -->
+                    <div class="panel panel-default product-meta">
+                        <div class="panel-body">
+                            <span itemprop="productID" class="sku_wrapper">Num. Referência: <span class="sku">{{ product.id }}</span></span>
+                            <span class="posted_in">Categoria: <a href="{{ product.category.get_absolute_url }}" rel="tag">{{ product.category.name }}</a>.</span>
+{#                            <span class="tagged_as">Tags: <a href="#" rel="tag">Pink</a>, <a href="#" rel="tag">Short</a>, <a href="#" rel="tag">Dress</a>, <a href="#" rel="tag">Printed</a>.</span>#}
+                        </div>
+                    </div><!-- Product Single - Meta End -->
+
+                    <!-- Product Single - Share
+                    ============================================= -->
+                    <div class="si-share noborder clearfix">
+                        <span>Share:</span>
+                        <div>
+                            <a href="#" class="social-icon si-borderless si-facebook">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon si-borderless si-twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon si-borderless si-pinterest">
+                                <i class="icon-pinterest"></i>
+                                <i class="icon-pinterest"></i>
+                            </a>
+                            <a href="#" class="social-icon si-borderless si-gplus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i>
+                            </a>
+                            <a href="#" class="social-icon si-borderless si-rss">
+                                <i class="icon-rss"></i>
+                                <i class="icon-rss"></i>
+                            </a>
+                            <a href="#" class="social-icon si-borderless si-email3">
+                                <i class="icon-email3"></i>
+                                <i class="icon-email3"></i>
+                            </a>
+                        </div>
+                    </div><!-- Product Single - Share End -->
+
+                </div>
+
+                <div class="col_one_fifth col_last">
+
+                    {% if product.brand %}
+                        <a href="#" title="Brand Logo" class="hidden-xs"><img class="image_fade" src="{{ product.brand.logo }}" alt="{{ product.brand.name }}"></a>
+
+                        <div class="divider divider-center"><i class="icon-circle-blank"></i></div>
+                    {% endif %}
+
+{#                    <div class="feature-box fbox-plain fbox-dark fbox-small">#}
+{#                        <div class="fbox-icon">#}
+{#                            <i class="icon-thumbs-up2"></i>#}
+{#                        </div>#}
+{#                        <h3>100% Original</h3>#}
+{#                        <p class="notopmargin">We guarantee you the sale of Original Brands.</p>#}
+{#                    </div>#}
+
+                    <div class="feature-box fbox-plain fbox-dark fbox-small">
+                        <div class="fbox-icon">
+                            <i class="icon-credit-cards"></i>
+                        </div>
+                        <h3>Pagamento</h3>
+                        <p class="notopmargin">Aceitamos as bandeiras Elo, Mastercard, Visa e Visa Electron.</p>
+                    </div>
+
+                    <div class="feature-box fbox-plain fbox-dark fbox-small">
+                        <div class="fbox-icon">
+                            <i class="icon-undo"></i>
+                        </div>
+                        <h3>Troca</h3>
+                        <p class="notopmargin">Trocamos os produtos até 30 dias após a data da compra.</p>
+                    </div>
+
+                </div>
+
+                <div class="col_full nobottommargin">
+
+                    <div class="tabs clearfix nobottommargin" id="tab-1">
+
+                        <ul class="tab-nav clearfix">
+{#                            <li><a href="#tabs-1"><i class="icon-align-justify2"></i><span class="hidden-xs"> Description</span></a></li>#}
+                            <li><a href="#tabs-3"><i class="icon-comments"></i><span class="hidden-xs"> Comentários</span></a></li>
+{#                            <li><a href="#tabs-2"><i class="icon-info-sign"></i><span class="hidden-xs"> Informações importantes</span></a></li>#}
+{#                            <li><a href="#tabs-3"><i class="icon-star3"></i><span class="hidden-xs"> Reviews (2)</span></a></li>#}
+                        </ul>
+
+                        <div class="tab-container">
+
+{#                            <div class="tab-content clearfix" id="tabs-1">#}
+{#                                <p>Pink printed dress,  woven, round neck with a keyhole and buttoned closure at the back, sleeveless, concealed zip up at left side seam, belt loops along waist with slight gathers beneath, brand appliqu?? above left front hem, has an attached lining.</p>#}
+{#                                Comes with a white, slim synthetic belt that has a tang clasp.#}
+{#                            </div>#}
+                            <div class="tab-content clearfix" id="tabs-3">
+                                <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+
+                            </div>
+                            <div class="tab-content clearfix" id="tabs-2">
+
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>Size</td>
+                                            <td>Small, Medium &amp; Large</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Color</td>
+                                            <td>Pink &amp; White</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waist</td>
+                                            <td>26 cm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Length</td>
+                                            <td>40 cm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Chest</td>
+                                            <td>33 inches</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fabric</td>
+                                            <td>Cotton, Silk &amp; Synthetic</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Warranty</td>
+                                            <td>3 Months</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clear"></div><div class="line"></div>
+
+        <div class="col_full nobottommargin">
+
+            {% include 'catalogue/product_list/_related_products.html' with products=product.related_products.all %}
+
+        </div>
+
+    </div>
+
+</div>
+
+    {% addtoblock "js_body" %}
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    {% endaddtoblock %}
+
+    {% addtoblock "meta" %}
+        <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+        <meta property="og:title" content="{{ product.name }}" />
+        <meta property="og:description" content="{{ product.description }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ im.url }}{% endthumbnail %}{% endwith %}" />
+        <meta property="fb:admins" content="jefernandes.junior"/>
+    {% endaddtoblock %}
+{% endblock %}

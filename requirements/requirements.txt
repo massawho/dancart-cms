@@ -17,6 +17,10 @@ pytz
 django-reversion>=1.8.7,<1.9
 django-classy-tags>=0.3.4.1
 html5lib
-Pillow>=2.3
 django-sekizai>=0.7
 six
+
+
+Pillow==2.8.0
+sorl-thumbnail==12.3
+django-admin-sortable==2.0.2

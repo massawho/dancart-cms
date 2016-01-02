@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-wrap">
+
+    <div class="container clearfix">
+
+        <div class="col_two_third bottommargin-lg">
+
+            <div class="fslider" data-arrows="false">
+                <div class="flexslider">
+                    <div class="slider-wrap">
+{#                        <div class="slide">#}
+{#                            <a href="#">#}
+{#                                <img src="http://image.shutterstock.com/z/stock-vector-vintage-merry-christmas-card-in-vector-funny-elves-dancing-under-the-snowfall-cute-holiday-159428264.jpg"  alt="Feliz Natal">#}
+{#                            </a>#}
+{#                        </div>#}
+                        <div class="slide">
+                            <a href="#">
+                                <img src="http://thumbs.dreamstime.com/z/new-years-eve-2011-17105049.jpg"  alt="Feliz Natal">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="#">
+                                <img src="http://thumbs.dreamstime.com/z/couple-celebrating-christmas-new-year-s-eve-lovers-toasting-champagne-glasses-holiday-47243266.jpg"  alt="Feliz Natal">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="#">
+                                <img src="{% static 'images/banners/feliz-natal.jpg' %}"  alt="Feliz Natal">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col_one_third bottommargin-lg col_last">
+
+            <div class="col_full bottommargin-sm">
+                <a href="{% url 'category' category='ballet' %}"><img src="{% static 'images/banners/ballet.jpg' %}"  alt="Ballet"></a>
+            </div>
+
+            <div class="col_full nobottommargin">
+                <a href="#"><img src="images/shop/banners/3.jpg" alt="Image"></a>
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <!-- <div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background-size: cover; background-image: url('http://thumbs.dreamstime.com/z/tango-dance-10829644.jpg');" data-stellar-background-ratio="0.1"> -->
+    <div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background-size: cover; background-image: url('http://image.shutterstock.com/z/stock-photo-tango-dancers-digital-painting-tango-dancers-251882848.jpg');" data-stellar-background-ratio="0.4">
+        <div class="container clearfix">
+            <h3 style="color: #fff;"><span>Ganhe</span> desconto de <span>15%</span> no valor do catálogo.</h3>
+            <span style="color: #fff;">Basta dizer que viu o produto em nossa Loja Virtual! Promoção válida até o final de Janeiro ou enquanto durar o estoque.</span>
+            <a href="{% url 'all_products' %}" class="button button-xlarge button-rounded">Ver catálogo</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

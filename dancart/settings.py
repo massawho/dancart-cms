@@ -129,6 +129,9 @@ INSTALLED_APPS = (
     'djangocms_teaser',
     'djangocms_video',
     'reversion',
+    'sorl.thumbnail',
+    'adminsortable',
+    'apps.catalogue',
     'dancart'
 )
 

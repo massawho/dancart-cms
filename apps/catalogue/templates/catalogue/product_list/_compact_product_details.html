@@ -1,0 +1,22 @@
+{% load static thumbnail %}
+<div class="spost clearfix">
+    <div class="entry-image">
+        {% with photo=product.photo_set.all|first %}
+            <a href="{{ product.get_absolute_url }}">
+            {% thumbnail photo.file "48x48" crop="center" as im %}
+                <img src="{{ im.url }}" alt="{{ photo.description }}">
+            {% empty %}
+                <img src="{% static 'images/no-image-thumb.png' %}" alt="{{ product.name }}">
+            {% endthumbnail %}
+            </a>
+        {% endwith %}
+    </div>
+    <div class="entry-c">
+        <div class="entry-title">
+            <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
+        </div>
+        <ul class="entry-meta">
+            <li class="color">{{ product.discount | default:product.price }}</li>
+        </ul>
+    </div>
+</div>
