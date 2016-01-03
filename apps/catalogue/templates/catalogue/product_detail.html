@@ -229,6 +229,6 @@
         <meta property="og:description" content="{{ product.description }}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ im.url }}{% endthumbnail %}{% endwith %}" />
-        <meta property="fb:admins" content="jefernandes.junior"/>
+        <meta property="fb:app_id" content="946322662082455"/>
     {% endaddtoblock %}
 {% endblock %}
