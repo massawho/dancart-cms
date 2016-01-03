@@ -58,7 +58,7 @@ class Brand(models.Model):
 class ProductManager(models.Manager):
 
     def most_popular(self):
-        return self.order_by('visits')
+        return self.order_by('-visits')
 
     def added_recently(self):
         return self.order_by('-publication_date')
