@@ -1,5 +1,7 @@
+from django.http.response import JsonResponse
 from django.views.generic import DetailView, ListView
 from .models import Product, Category
+from django.db.models import F
 
 
 class ProductList(ListView):
@@ -40,6 +42,13 @@ class CategoryList(ProductList):
             filters['category__in'] = descendants + [category, ]
 
         return queryset.filter(**filters)
+
+
+def set_visit(request, category, slug):
+    product = Product.objects.get(slug=slug)
+    product.visits = F('visits') + 1
+    product.save()
+    return JsonResponse({'status': True})
 
 
 class ProductDetail(DetailView):
