@@ -1,4 +1,6 @@
 import os
+from django.utils.translation import ugettext_lazy as _
+
 gettext = lambda s: s
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 """
@@ -132,6 +134,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'adminsortable',
     'apps.catalogue',
+    'canvas',
     'dancart'
 )
 
@@ -171,5 +174,13 @@ CMS_PLACEHOLDER_CONF = {}
 MIGRATION_MODULES = {
     
 }
+
+CMS_STYLE_NAMES = (
+    ('container clearfix', _("Container")),
+    ('col_one_third bottommargin-lg', _("1-3 col with bottom margin")),
+    ('col_one_third bottommargin-lg col_last', _("Last 1-3 col with bottom margin")),
+    ('col_half bottommargin-lg', _("half column with bottom margin")),
+    ('col_half bottommargin-lg col_last', _("Last half column with bottom margin")),
+)
 
 from .local_settings import *

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static cms_tags %}
 
 {% block content %}
 <div class="content-wrap">
@@ -53,13 +53,8 @@
 
     </div>
 
-    <!-- <div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background-size: cover; background-image: url('http://thumbs.dreamstime.com/z/tango-dance-10829644.jpg');" data-stellar-background-ratio="0.1"> -->
-    <div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background-size: cover; background-image: url('http://image.shutterstock.com/z/stock-photo-tango-dancers-digital-painting-tango-dancers-251882848.jpg');" data-stellar-background-ratio="0.4">
-        <div class="container clearfix">
-            <h3 style="color: #fff;"><span>Ganhe</span> desconto de <span>15%</span> no valor do catálogo.</h3>
-            <span style="color: #fff;">Basta dizer que viu o produto em nossa Loja Virtual! Promoção válida até o final de Janeiro ou enquanto durar o estoque.</span>
-            <a href="{% url 'all_products' %}" class="button button-xlarge button-rounded">Ver catálogo</a>
-        </div>
-    </div>
+    {% placeholder 'home_content' %}
+
+
 </div>
 {% endblock %}

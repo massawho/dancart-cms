@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.defaultfilters import slugify
+from cms.cms_plugins import CMSPlugin
 from treebeard.mp_tree import MP_Node
 from sorl.thumbnail import ImageField
 from adminsortable.models import SortableMixin
@@ -178,4 +179,20 @@ class Photo(SortableMixin):
     file = ImageField(
         upload_to=get_product_photo_path,
         null=False
+    )
+
+
+""" ''''''''''''''''''''''''''''''
+
+    CMS PLUGIN MODELS
+
+""" ''''''''''''''''''''''''''''''
+
+
+# Product listing plugin model
+class ProductListPluginModel(CMSPlugin):
+
+    num_items = models.PositiveIntegerField(
+        _('Number of items'),
+        help_text='Number of items to be displayed'
     )
