@@ -134,6 +134,7 @@ tmtags
 
 #django production
 static/
+media/
 
 # OS files
 .DS_Store
