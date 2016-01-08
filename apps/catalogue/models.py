@@ -1,3 +1,5 @@
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -25,9 +27,14 @@ class Category(MP_Node):
 
     name = models.CharField(max_length=45)
     slug = models.SlugField()
-    
+
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.is_root():
+            slug_list = set(slugify(ancestor.slug) for ancestor in self.get_ancestors())
+            self.slug = '/'.join(slug_list) + "/%s" % slugify(self.name)
+        else:
+            self.slug = slugify(self.name)
+
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -71,77 +78,77 @@ class Product(models.Model):
     objects = ProductManager()
 
     category = models.ForeignKey(
-        Category,
-        help_text=_('Category of this product')
+            Category,
+            help_text=_('Category of this product')
     )
-    
+
     name = models.CharField(
-        _('Product name'),
-        max_length=140,
-        null=False,
-        blank=False
+            _('Product name'),
+            max_length=140,
+            null=False,
+            blank=False
     )
 
     description = models.TextField(
-        _('Product description'),
-        null=False,
-        blank=False
+            _('Product description'),
+            null=False,
+            blank=False
     )
 
     publication_date = models.DateField(
-        _('Publication date'),
-        null=False,
-        blank=False,
-        auto_now_add=True,
-        help_text=_('Date when this product was published.')
+            _('Publication date'),
+            null=False,
+            blank=False,
+            auto_now_add=True,
+            help_text=_('Date when this product was published.')
     )
 
     visits = models.PositiveIntegerField(
-        _('Number of visit'),
-        default=0,
-        null=False,
-        blank=False,
-        help_text=_('Number of times this product has been visited')
+            _('Number of visit'),
+            default=0,
+            null=False,
+            blank=False,
+            help_text=_('Number of times this product has been visited')
     )
 
     price = models.DecimalField(
-        null=True,
-        blank=True,
-        max_digits=8,
-        decimal_places=2
+            null=True,
+            blank=True,
+            max_digits=8,
+            decimal_places=2
     )
 
     discount_price = models.DecimalField(
-        null=True,
-        blank=True,
-        max_digits=8,
-        decimal_places=2
+            null=True,
+            blank=True,
+            max_digits=8,
+            decimal_places=2
     )
 
     slug = models.SlugField(
-        _('Slug'),
-        max_length=140,
-        null=False,
-        blank=False,
-        help_text=_('A unique name to identify this product.')
+            _('Slug'),
+            max_length=140,
+            null=False,
+            blank=False,
+            help_text=_('A unique name to identify this product.')
     )
 
     related_products = models.ManyToManyField(
-        'self',
-        blank=True,
-        verbose_name=_('List of related products'),
-        help_text=_('Products that are related to this product.')
+            'self',
+            blank=True,
+            verbose_name=_('List of related products'),
+            help_text=_('Products that are related to this product.')
     )
 
     brand = models.ForeignKey(
-        Brand,
-        null=True,
-        blank=True
+            Brand,
+            null=True,
+            blank=True
     )
 
     def get_absolute_url(self):
-        return reverse("product_details", args=[self.category.slug, self.slug])
-    
+        return reverse("product_details", args=[self.slug])
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
@@ -180,6 +187,19 @@ class Photo(SortableMixin):
         upload_to=get_product_photo_path,
         null=False
     )
+
+
+""" ''''''''''''''''''''''''''''''
+
+    SIGNALS
+
+""" ''''''''''''''''''''''''''''''
+
+
+@receiver(post_save, sender=Category, dispatch_uid='fix_category_children_slug')
+def update_stock(sender, instance, **kwargs):
+    for child in instance.get_children():
+        child.save()
 
 
 """ ''''''''''''''''''''''''''''''
