@@ -77,7 +77,7 @@
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                             </a>
-                            <a href="https://www.pinterest.com/pin/create/button/" class="social-icon si-borderless si-pinterest" data-pin-custom="true">
+                            <a href="{{ request.build_absolute_uri }}" data-image="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ im.url|urlencode }}{% endthumbnail %}{% endwith %}" data-desc="{{ product.description }}" target="pinIt" class="social-icon si-borderless si-pinterest">
                                 <i class="icon-pinterest"></i>
                                 <i class="icon-pinterest"></i>
                             </a>
@@ -219,6 +219,20 @@
     {% endaddtoblock %}
     {% addtoblock "js" %}
         <script>
+            $('.social-icon.si-pinterest').click(function() {
+                var url = $(this).attr('href');
+                var media = $(this).attr('data-image');
+                var desc = $(this).attr('data-desc');
+                window.open("//www.pinterest.com/pin/create/button/"+
+                "?url="+url+
+                "&media="+media+
+                "&description="+desc,"pinIt","toolbar=no, scrollbars=no, resizable=no, top=0, right=0, width=750, height=320");
+                return false;
+            });
+        </script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+        <script>
             $('.social-icon.si-facebook').on('click', function() {
                 FB.ui({
                     method: 'share',
@@ -231,7 +245,10 @@
         <meta property="og:url" content="{{ request.build_absolute_uri }}" />
         <meta property="og:title" content="{{ product.name }}" />
         <meta property="og:description" content="{{ product.description }}" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="product" />
+        <meta property="og:site_name" content="Dançart - Artigos de Dança" />
+        <meta property="og:price:amount" content="{{ product.discount|default:product.price }}" />
+        <meta property="og:price:currency" content="BRL" />
         <meta property="og:image" content="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ im.url }}{% endthumbnail %}{% endwith %}" />
         <meta property="fb:app_id" content="946322662082455"/>
     {% endaddtoblock %}
