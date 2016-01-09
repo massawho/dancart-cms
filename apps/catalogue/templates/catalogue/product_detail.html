@@ -212,20 +212,21 @@
 
 </div>
 
-    {% addtoblock "js_body" %}
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-    {% endaddtoblock %}
+    {% include 'shared/_facebook_sdk.html' %}
 
     {% addtoblock "js" %}
         <script>
             $.get('{{ request.path }}set-visit/');
+        </script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+        <script>
+            $('.social-icon.si-facebook').on('click', function() {
+                FB.ui({
+                    method: 'share',
+                    href: '{{ request.META.HTTP_HOST }}{{ product.get_absolute_url }}',
+                });
+            });
         </script>
     {% endaddtoblock %}
     {% addtoblock "meta" %}
