@@ -73,7 +73,7 @@
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
                             </a>
-                            <a href="#" class="social-icon si-borderless si-twitter">
+                            <a href="https://twitter.com/intent/tweet?text={{ product.name|add:" "|add:request.build_absolute_uri|urlencode }}" data-size="large" class="social-icon si-borderless si-twitter">
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                             </a>
@@ -84,10 +84,6 @@
                             <a href="#" class="social-icon si-borderless si-gplus">
                                 <i class="icon-gplus"></i>
                                 <i class="icon-gplus"></i>
-                            </a>
-                            <a href="#" class="social-icon si-borderless si-rss">
-                                <i class="icon-rss"></i>
-                                <i class="icon-rss"></i>
                             </a>
                             <a href="#" class="social-icon si-borderless si-email3">
                                 <i class="icon-email3"></i>
@@ -213,6 +209,7 @@
 </div>
 
     {% include 'shared/_facebook_sdk.html' %}
+    {% include 'shared/_twitter_sdk.html' %}
 
     {% addtoblock "js" %}
         <script>
