@@ -14,6 +14,7 @@ SECRET_KEY = 'j_2$bw&+fr0g!@m*f8(+a+vmf18nug9_nq1#3jdl!1b+j*=3^('
 DEBUG = False
 
 ALLOWED_HOSTS = ['www.lojadancart.com.br', 'lojadancart.com.br',]
+SITE_URL = 'http://lojadancart.com.br'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

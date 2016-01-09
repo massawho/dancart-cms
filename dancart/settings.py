@@ -77,6 +77,7 @@ TEMPLATES = [
                 'django.core.context_processors.media',
                 'django.core.context_processors.csrf',
                 'django.core.context_processors.tz',
+                'apps.catalogue.context_processors.site',
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
                 'cms.context_processors.cms_settings'
