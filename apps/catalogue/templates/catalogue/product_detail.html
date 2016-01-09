@@ -222,7 +222,7 @@
             $('.social-icon.si-facebook').on('click', function() {
                 FB.ui({
                     method: 'share',
-                    href: '{{ request.META.HTTP_HOST }}{{ product.get_absolute_url }}',
+                    href: '{{ request.build_absolute_uri }}',
                 });
             });
         </script>
