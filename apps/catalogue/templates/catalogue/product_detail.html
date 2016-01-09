@@ -77,7 +77,7 @@
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                             </a>
-                            <a href="{{ request.build_absolute_uri }}" data-image="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ SITE_URL|add:im.url }}{% empty %}{% static 'images/no-image.png' %}{% endthumbnail %}{% endwith %}" data-desc="{{ product.description }}" target="pinIt" class="social-icon si-borderless si-pinterest">
+                            <a href="{{ request.build_absolute_uri }}" data-image="{% with photo=product.photo_set.all|first %}{% thumbnail photo.file "440x586" crop="center" as im %}{{ SITE_URL|add:im.url }}{% empty %}{{ SITE_URL }}{% static 'images/no-image.png' %}{% endthumbnail %}{% endwith %}" data-desc="{{ product.description }}" target="pinIt" class="social-icon si-borderless si-pinterest">
                                 <i class="icon-pinterest"></i>
                                 <i class="icon-pinterest"></i>
                             </a>
