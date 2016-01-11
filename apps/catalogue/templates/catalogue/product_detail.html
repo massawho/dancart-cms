@@ -99,7 +99,7 @@
                 <div class="col_one_fifth col_last">
 
                     {% if product.brand %}
-                        <a href="#" title="Brand Logo" class="hidden-xs"><img class="image_fade" src="{{ product.brand.logo }}" alt="{{ product.brand.name }}"></a>
+                        <a href="#" title="{{ product.brand }}" class="hidden-xs"><img class="image_fade" src="{{ product.brand.logo.url }}" alt="{{ product.brand.name }}"></a>
 
                         <div class="divider divider-center"><i class="icon-circle-blank"></i></div>
                     {% endif %}
