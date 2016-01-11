@@ -146,6 +146,12 @@ class Product(models.Model):
             blank=True
     )
 
+    def get_default_photo(self):
+        if not self.__default_photo:
+            self.__default_photo = self.photo_set.first()
+
+        return self.__default_photo
+
     def get_absolute_url(self):
         return reverse("product_details", args=[self.slug])
 
