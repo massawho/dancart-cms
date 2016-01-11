@@ -1021,8 +1021,12 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
 #footer.dark,
 .dark #footer {
 	background-color: #333;
-	color: #CCC;
 	border-top-color: rgba(0,0,0,0.2);
+	color: #CCC;
+}
+
+.dark address a {
+	color: rgba(255,255,255,0.25);
 }
 
 .dark #copyrights {
