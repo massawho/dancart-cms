@@ -37,11 +37,6 @@ class CategoryList(ProductList):
         queryset = super(CategoryList, self).get_queryset()
         filters = {}
         if 'category' in self.kwargs:
-            print (self.kwargs['category'])
-            print (self.kwargs['category'])
-            print (self.kwargs['category'])
-            print (self.kwargs['category'])
-            print (self.kwargs['category'])
             category = Category.objects.filter(slug=self.kwargs['category']).get()
             descendants = list(category.get_descendants().all())
             filters['category__in'] = descendants + [category, ]
