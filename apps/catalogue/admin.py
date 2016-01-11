@@ -1,5 +1,5 @@
 from adminsortable.admin import NonSortableParentAdmin, SortableTabularInline
-from .models import Product, Category, Photo
+from .models import Product, Category, Photo, Brand
 from django.contrib import admin
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
@@ -26,3 +26,4 @@ class ProductAdmin(NonSortableParentAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Brand)

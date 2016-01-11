@@ -12,7 +12,7 @@ import os
 
 
 def get_brand_logo_path(instance, filename):
-    return os.path.join("uploads/brands/%d" % instance.id, filename)
+    return os.path.join("uploads/brands/%s" % instance.id, filename)
 
 
 def get_product_photo_path(instance, filename):
@@ -60,6 +60,9 @@ class Brand(models.Model):
         null=False,
         help_text=_('Logo of this brand')
     )
+
+    def __str__(self):
+        return self.name
 
 
 # Product manager
