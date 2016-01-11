@@ -147,9 +147,8 @@ class Product(models.Model):
     )
 
     def get_default_photo(self):
-        if not self.__default_photo:
+        if not hasattr(self, '__default_photo'):
             self.__default_photo = self.photo_set.first()
-
         return self.__default_photo
 
     def get_absolute_url(self):
