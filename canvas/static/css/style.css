@@ -5993,6 +5993,8 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .product-overlay a {
 
 .sale-flash.out-of-stock { background-color: #777; }
 
+.owl-item .product .product-desc {text-align: center;}
+.owl-item .product .product-desc p {display: none;}
 
 /* Shop - 3 Columns
 -----------------------------------------------------------------*/
