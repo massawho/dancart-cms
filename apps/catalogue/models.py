@@ -43,7 +43,8 @@ class Category(MP_Node):
         return reverse("category", args=[self.slug])
 
     def __str__(self):
-        return self.name
+        name_list = list(ancestor.name for ancestor in self.get_ancestors()) + [self.name]
+        return ' / '.join(name_list)
 
 
 # Brand class
