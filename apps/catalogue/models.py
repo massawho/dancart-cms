@@ -1,10 +1,12 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.defaultfilters import slugify
 from cms.cms_plugins import CMSPlugin
+from sorl.thumbnail.shortcuts import get_thumbnail
 from treebeard.mp_tree import MP_Node
 from sorl.thumbnail import ImageField
 from adminsortable.models import SortableMixin
@@ -80,9 +82,10 @@ class Product(models.Model):
 
     objects = ProductManager()
 
-    category = models.ForeignKey(
+    categories = models.ManyToManyField(
             Category,
-            help_text=_('Category of this product')
+            verbose_name=_('List of categories'),
+            help_text=_('Categories of this product')
     )
 
     name = models.CharField(
@@ -161,6 +164,12 @@ class Product(models.Model):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
 
+    def get_default_photo_thumbnail(obj):
+        return mark_safe("<img src=\"%s\">" %
+                         get_thumbnail(obj.get_default_photo().file, '100x100', crop='center', quality=99).url
+                         )
+    get_default_photo_thumbnail.short_description = _('')
+
     def __str__(self):
         return self.name
 
@@ -195,6 +204,9 @@ class Photo(SortableMixin):
         upload_to=get_product_photo_path,
         null=False
     )
+
+    def __str__(self):
+        return ''
 
 
 """ ''''''''''''''''''''''''''''''
