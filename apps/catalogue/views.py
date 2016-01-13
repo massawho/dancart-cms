@@ -25,7 +25,7 @@ class ProductList(ListView):
         filters = {}
         if 'q' in self.request.GET:
             filters['name__icontains'] = self.request.GET['q']
-        return self.model.objects.select_related('category').filter(**filters)
+        return self.model.objects.filter(**filters)
 
 
 class CategoryList(ProductList):
@@ -39,7 +39,7 @@ class CategoryList(ProductList):
         if 'category' in self.kwargs:
             category = Category.objects.filter(slug=self.kwargs['category']).get()
             descendants = list(category.get_descendants().all())
-            filters['category__in'] = descendants + [category, ]
+            filters['categories__in'] = descendants + [category, ]
 
         return queryset.filter(**filters)
 
