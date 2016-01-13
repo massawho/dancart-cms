@@ -20,7 +20,7 @@ class PhotoInline(SortableTabularInline):
 
 class ProductAdmin(NonSortableParentAdmin):
     exclude = ('slug', 'visits')
-    filter_horizontal = ('related_products',)
+    filter_horizontal = ('related_products', 'categories')
     inlines = [PhotoInline]
 
 
