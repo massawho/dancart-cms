@@ -1,0 +1,11 @@
+{% if pages %}
+<ul class="pagination topmargin nobottommargin">
+<li{% if not previous_url %} class="disabled"{% endif %}><a href="{{ previous_url|default:'javascript:;' }}">&laquo;</a></li>
+{% for group in pages %}
+    {% for page in group %}
+        <li{% if page.current %} class="active"{% endif %}><a href="{{ page.url }}">{{ page.number }}</a></li>
+    {% endfor %}
+    {% if not forloop.last %}<li class="disabled"><a href="javascript:;">...</a></li>{% endif %}
+{% endfor %}
+<li{% if not next_url %} class="disabled"{% endif %}><a href="{{ next_url|default:'javascript:;' }}">&raquo;</a></li>
+{% endif %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static thumbnail cms_tags menu_tags %}
+{% load static thumbnail cms_tags menu_tags pagination_nav %}
 {% block content %}
 
     <div class="content-wrap">
@@ -16,6 +16,7 @@
                         Nenhum produto encontrado.
                     {% endfor %}
 
+                    {% pagination_nav_qs page_obj '' request.GET 'page' %}
                 </div><!-- #shop end -->
 
             </div><!-- .postcontent end -->
@@ -47,7 +48,8 @@
                         {% include 'catalogue/product_list/_compact_list.html' with title='Produtos populares' products=popular_items fancy_title=False %}
 
                     </div>
-            </div><!-- .sidebar end -->
+                </div><!-- .sidebar end -->
+            </div>
         </div>
     </div>
 {% endblock %}
