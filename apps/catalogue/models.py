@@ -1,3 +1,5 @@
+from django.core.files.storage import get_storage_class
+from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.safestring import mark_safe
@@ -165,10 +167,16 @@ class Product(models.Model):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
 
+    def get_no_photo_image(self):
+        static_storage = get_storage_class(settings.STATICFILES_STORAGE)()
+        return static_storage.url('images/no-image.png')
+
     def get_default_photo_thumbnail(obj):
-        return mark_safe("<img src=\"%s\">" %
-                         get_thumbnail(obj.get_default_photo().file, '100x100', crop='center', quality=99).url
-                         )
+        default_photo = obj.get_default_photo()
+        url = get_thumbnail(
+                default_photo.file,
+                '100x100', crop='center', quality=99).url if default_photo is not None else obj.get_no_photo_image()
+        return mark_safe("<img width=\"100px\" height=\"auto\" src=\"%s\">" %url)
     get_default_photo_thumbnail.short_description = _('')
 
     def __str__(self):
