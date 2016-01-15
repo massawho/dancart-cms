@@ -5865,6 +5865,14 @@ p.wp-caption-text {
 	overflow: hidden;
 }
 
+.owl-item .product-image {
+	height: 270px;
+}
+
+.owl-item .product {
+	width: 200px;
+}
+
 .product-image > a,
 .product-image .slide a,
 .product-image img {
@@ -5901,7 +5909,7 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .product-image > a {
 
 .product-title h3 {
 	margin: 0;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .product-title h3 a,
