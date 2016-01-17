@@ -5851,6 +5851,10 @@ p.wp-caption-text {
 	margin: 0 -20px -20px 0;
 }
 
+#shop .product p{
+    display: none;
+}
+
 .product {
 	position: relative;
 	float: left;

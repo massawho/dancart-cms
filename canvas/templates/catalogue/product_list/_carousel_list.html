@@ -1,0 +1,36 @@
+{% load static thumbnail sekizai_tags %}
+{% if products %}
+{% include 'canvas/_title.html' with title=title fancy_title=fancy_title %}
+
+<div class="oc-product owl-carousel product-carousel">
+    {% for product in products %}
+        {% include 'catalogue/product_list/_enlarged_product_details.html' with product=product %}
+    {% endfor %}
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+
+        var ocProduct = $(".oc-product");
+
+        ocProduct.owlCarousel({
+            margin: 30,
+            nav: true,
+            navText : ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+            autoplayHoverPause: true,
+            dots: false,
+            responsive:{
+                0:{ items:1 },
+                480:{ items:2 },
+                768:{ items:3 },
+                992:{ items:5 }
+            }
+        });
+
+    });
+
+</script>
+{% endaddtoblock %}
+{% endif %}
