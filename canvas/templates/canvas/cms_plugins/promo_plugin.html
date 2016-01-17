@@ -1,5 +1,5 @@
 {% load cms_tags %}
-<div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background-size: cover; background-image: url('{{ instance.background.url }}');" data-stellar-background-ratio="0.4">
+<div class="promo parallax promo-full bottommargin-lg" style="width: 100%; background:linear-gradient(rgba(67, 62, 62, 0.45),rgba(67, 62, 62, 0.45)), url('{{ instance.background.url }}'); background-size: cover;" data-stellar-background-ratio="0.4">
     <div class="container clearfix">
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
