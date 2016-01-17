@@ -133,7 +133,7 @@ tmtags
 *.db
 
 #django production
-static/
+/static/
 media/
 
 # OS files
