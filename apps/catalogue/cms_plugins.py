@@ -1,7 +1,7 @@
 from cms.cms_plugins import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
-from .models import ProductListPluginModel, Product
+from .models import ProductListPluginModel, Product, Brand
 
 
 class MostViewedProductsPlugin(CMSPluginBase):
@@ -30,5 +30,18 @@ class MostRecentProductsPlugin(CMSPluginBase):
         return context
 
 
+class BrandListPlugin(CMSPluginBase):
+
+    module = _('Catalogue')
+    name = _('Brand List')
+    render_template = 'catalogue/cms_plugins/brand_list.html'
+
+    def render(self, context, instance, placeholder):
+        brands = Brand.objects.all()
+        context.update({'brands': brands})
+        return context
+
+
 plugin_pool.register_plugin(MostViewedProductsPlugin)
 plugin_pool.register_plugin(MostRecentProductsPlugin)
+plugin_pool.register_plugin(BrandListPlugin)
