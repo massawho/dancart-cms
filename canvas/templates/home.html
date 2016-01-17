@@ -11,24 +11,14 @@
             <div class="fslider" data-arrows="false">
                 <div class="flexslider">
                     <div class="slider-wrap">
-{#                        <div class="slide">#}
-{#                            <a href="#">#}
-{#                                <img src="http://image.shutterstock.com/z/stock-vector-vintage-merry-christmas-card-in-vector-funny-elves-dancing-under-the-snowfall-cute-holiday-159428264.jpg"  alt="Feliz Natal">#}
-{#                            </a>#}
-{#                        </div>#}
                         <div class="slide">
-                            <a href="#">
-                                <img src="http://thumbs.dreamstime.com/z/new-years-eve-2011-17105049.jpg"  alt="Feliz Natal">
+                            <a href="{% url 'category' category='jazz' %}">
+                                <img src="{% static 'images/banners/jazz-contemporaneo.jpg' %}"  alt="Jazz e Contemporâneo">
                             </a>
                         </div>
                         <div class="slide">
                             <a href="#">
-                                <img src="http://thumbs.dreamstime.com/z/couple-celebrating-christmas-new-year-s-eve-lovers-toasting-champagne-glasses-holiday-47243266.jpg"  alt="Feliz Natal">
-                            </a>
-                        </div>
-                        <div class="slide">
-                            <a href="#">
-                                <img src="{% static 'images/banners/feliz-natal.jpg' %}"  alt="Feliz Natal">
+                                <img src="{% static 'images/banners/danca-salao.jpg' %}"  alt="Dança Salão">
                             </a>
                         </div>
                     </div>
@@ -44,7 +34,7 @@
             </div>
 
             <div class="col_full nobottommargin">
-                <a href="#"><img src="images/shop/banners/3.jpg" alt="Image"></a>
+                <a href="{% url 'category' category='ministerio-da-danca' %}"><img src="{% static 'images/banners/ministerio-danca.jpg' %}"  alt="Ministério Dança"></a>
             </div>
 
         </div>
