@@ -3,11 +3,13 @@
 <ul class="clients-grid grid-6 nobottommargin clearfix">
     {% for brand in brands %}
         <li>
-            {% thumbnail brand.logo.file "320x240" crop="center" as im %}
-                <img src="{{ im.url }}" alt="{{ brand.name }}">
-            {% empty %}
-                <img src="{% static 'images/brand-no-image.png' %}" width="320" height="240" alt="{{ brand.name }}">
-            {% endthumbnail %}
+            <a href="javascript:;">
+                {% thumbnail brand.logo.file "320x240" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="{{ brand.name }}">
+                {% empty %}
+                    <img src="{% static 'images/brand-no-image.png' %}" width="320" height="240" alt="{{ brand.name }}">
+                {% endthumbnail %}
+            </a>
         </li>
     {% endfor %}
 </ul>
