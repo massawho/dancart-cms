@@ -16,7 +16,7 @@ import os
 
 
 def get_brand_logo_path(instance, filename):
-    return os.path.join("uploads/brands/%s" % instance.id, filename)
+    return os.path.join("uploads/brands/", instance.name + instance.file_extension)
 
 
 def get_product_photo_path(instance, filename):
