@@ -1,5 +1,5 @@
 {% load static thumbnail %}
-<div class="product clearfix">
+<div class="product clearfix{% if bottom_margin %} bottommargin-{{ bottom_margin }}{% endif %}">
     <div class="product-image">
         <a href="{{ product.get_absolute_url }}">
             {% thumbnail product.get_default_photo.file "440x586" crop="center" as im %}

@@ -8,10 +8,10 @@
 
                 <!-- Shop
                 ============================================= -->
-                <div id="shop" class="product-1 clearfix">
+                <div id="shop" class="product-3 clearfix">
 
                     {% for product in products %}
-                        {% include 'catalogue/product_list/_enlarged_product_details.html' with product=product %}
+                        {% include 'catalogue/product_list/_enlarged_product_details.html' with bottom_margin='lg' %}
                     {% empty %}
                         Nenhum produto encontrado.
                     {% endfor %}
