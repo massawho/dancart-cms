@@ -5911,6 +5911,11 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs) .product-image > a {
 
 .product-title { margin-bottom: 7px; }
 
+.product-2 .product-title h3, .product-3 .product-title h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 .product-title h3 {
 	margin: 0;
 	font-size: 16px;
