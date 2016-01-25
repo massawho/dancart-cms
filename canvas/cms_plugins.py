@@ -32,3 +32,4 @@ class FancyTitlePlugin(CMSPluginBase):
 
 
 plugin_pool.register_plugin(PromoPlugin)
+plugin_pool.register_plugin(FancyTitlePlugin)
