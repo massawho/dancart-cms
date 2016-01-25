@@ -36,7 +36,7 @@ class FancyTitlePluginModel(CMSPlugin):
     top_margin = models.CharField(
         _('Margin top'),
         max_length=20,
-        blank=False,
+        blank=True,
         null=False,
         choices=MARGIN_TOP,
         default='',
