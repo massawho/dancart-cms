@@ -27,7 +27,7 @@ class FancyTitlePluginModel(CMSPlugin):
 
     title = models.CharField(
         _('Title'),
-        max_length=20,
+        max_length=60,
         blank=False,
         null=False,
         help_text=_('Title to be displayed')
@@ -49,3 +49,6 @@ class FancyTitlePluginModel(CMSPlugin):
         default=False,
         help_text=_('Should the title be centered?')
     )
+
+    def __str__(self):
+        return self.title
