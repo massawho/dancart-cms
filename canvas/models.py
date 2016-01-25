@@ -33,14 +33,14 @@ class FancyTitlePluginModel(CMSPlugin):
         help_text=_('Title to be displayed')
     )
 
-    margin_top = models.CharField(
-        _('Title'),
+    top_margin = models.CharField(
+        _('Margin top'),
         max_length=20,
         blank=False,
         null=False,
         choices=MARGIN_TOP,
         default='',
-        help_text=_('Title to be displayed')
+        help_text=_('Size of the margin top')
     )
 
     center = models.BooleanField(
