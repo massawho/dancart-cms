@@ -13,3 +13,39 @@ class PromoPluginModel(CMSPlugin):
         upload_to='upload/promo_box/',
         help_text=_('The background of the promo box')
     )
+
+
+# Fancy title plugin model
+class FancyTitlePluginModel(CMSPlugin):
+
+    MARGIN_TOP = (
+        ('', 'None'),
+        ('sm', 'Small'),
+        ('md', 'Medium'),
+        ('lg', 'Large')
+    )
+
+    title = models.CharField(
+        _('Title'),
+        max_length=20,
+        blank=False,
+        null=False,
+        help_text=_('Title to be displayed')
+    )
+
+    margin_top = models.CharField(
+        _('Title'),
+        max_length=20,
+        blank=False,
+        null=False,
+        choices=MARGIN_TOP,
+        default='',
+        help_text=_('Title to be displayed')
+    )
+
+    center = models.BooleanField(
+        _('Centered'),
+        max_length=20,
+        default=False,
+        help_text=_('Should the title be centered?')
+    )

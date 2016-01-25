@@ -1,9 +1,7 @@
 from cms.cms_plugins import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
-
-from apps.catalogue.models import Product
-from .models import PromoPluginModel
+from .models import PromoPluginModel, FancyTitlePluginModel
 
 
 class PromoPlugin(CMSPluginBase):
@@ -16,6 +14,20 @@ class PromoPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
+        return context
+
+
+class FancyTitlePlugin(CMSPluginBase):
+
+    module = _('Canvas template')
+    name = _('Fancy title')
+    model = FancyTitlePluginModel
+    render_template = 'canvas/cms_plugins/title.html'
+
+    def render(self, context, instance, placeholder):
+        context['center'] = instance.center
+        context['top_margin'] = instance.top_margin
+        context['title'] = instance.title
         return context
 
 
