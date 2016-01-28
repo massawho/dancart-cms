@@ -60,7 +60,7 @@
                     <div class="panel panel-default product-meta">
                         <div class="panel-body">
                             <span itemprop="productID" class="sku_wrapper">Num. Referência: <span class="sku">{{ product.id }}</span></span>
-                            <span class="posted_in">Categoria(s): {% for category in product.categories.all %}<a href="{{ category.get_absolute_url }}" rel="tag">{{ category.name }}{% if not forloop.last %},{% else %}.{% endif %}</a>{% endfor %}</span>
+                            <span class="posted_in">Categoria(s): {% for category in product.categories.all %}<a href="{{ category.get_absolute_url }}" rel="tag">{{ category }}{% if not forloop.last %},{% else %}.{% endif %}</a>{% endfor %}</span>
 {#                            <span class="tagged_as">Tags: <a href="#" rel="tag">Pink</a>, <a href="#" rel="tag">Short</a>, <a href="#" rel="tag">Dress</a>, <a href="#" rel="tag">Printed</a>.</span>#}
                         </div>
                     </div><!-- Product Single - Meta End -->
