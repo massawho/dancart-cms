@@ -93,23 +93,6 @@
 					<a href="/" class="retina-logo"><img src="{% static 'images/logo@2x.png' %}" alt="Dançart - Artigos de Dança"></a>
 				</div><!-- #logo end -->
 
-				<ul class="header-extras">
-					<li>
-						<i class="i-medium i-circled i-bordered icon-thumbs-up2 nomargin"></i>
-						<div class="he-text">
-							Marcas originais
-							<span>100% garantido</span>
-						</div>
-					</li>
-					<li>
-						<i class="i-medium i-circled i-bordered icon-undo nomargin"></i>
-						<div class="he-text">
-							Política de troca
-							<span>Prazo de 30 dias</span>
-						</div>
-					</li>
-				</ul>
-
 			</div>
 
 			<div id="header-wrap">
@@ -219,5 +202,14 @@
 	============================================= -->
 	<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
     {% render_block "js" %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-68938513-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
