@@ -60,6 +60,7 @@ h6 > span:not(.nocolor),
 
 .color,
 #primary-menu ul ul li:hover > a,
+#primary-menu ul ul > li.current > a,
 #primary-menu ul li .mega-menu-content.style-2 > ul > li.mega-menu-title > a:hover,
 .top-cart-item-desc a:hover,
 .faqlist li a:hover,

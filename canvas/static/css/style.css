@@ -1171,6 +1171,7 @@ body.stretched #header.full-header .container {
 	transition: all .2s ease-in-out;
 }
 
+#primary-menu ul ul > li.current > a,
 #primary-menu ul ul li:hover > a {
 	background-color: #F9F9F9;
 	padding-left: 18px;
@@ -1185,7 +1186,6 @@ body.stretched #header.full-header .container {
 	background-position: right center;
 	background-repeat: no-repeat;
 }
-
 
 /* ----------------------------------------------------------------
 	Mega Menu

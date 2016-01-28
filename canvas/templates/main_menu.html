@@ -3,7 +3,12 @@
 {% for child in children %}
 
     <li class="{% if child.selected or child.ancestor %}current{% endif %}">
-      <a href="{{ child.get_absolute_url }}"><div>{{ child.get_menu_title }}</div></a>
+        <a href="{{ child.get_absolute_url }}"><div>{{ child.get_menu_title }}</div></a>
+        {% if child.children%}
+            <ul>
+                {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+            </ul>
+        {% endif %}
     </li>
 
 {% endfor %}
