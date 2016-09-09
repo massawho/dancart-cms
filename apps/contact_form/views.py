@@ -9,7 +9,8 @@ def send_email(request):
         if form.is_valid():
             data = form.cleaned_data
             try:
-                send_mail('Contato pelo site', data['message'], "%s <%s>" % (data['name'], data['email']),
+                message = "Telefone: %s \n\n Mensagem: %s" % (data['phone'], data['message'])
+                send_mail('Contato pelo site', message, "%s <%s>" % (data['name'], data['email']),
                           ['jefernandes.junior@gmail.com'],
                           fail_silently=False)
                 return JsonResponse({'alert':'success', 'message':'Mensagem enviada com sucesso.'})
