@@ -7348,6 +7348,10 @@ body:not(.device-touch) .button.button-full strong {
 	color: #333;
 }
 
+.feature-box h3 a {
+	color: #333;
+}
+
 .feature-box p {
 	margin: 8px 0 0 0;
 	color: #999;
