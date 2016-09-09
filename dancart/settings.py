@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'adminsortable',
     'apps.catalogue',
+    'apps.contact_form',
     'canvas',
     'dancart'
 )

@@ -1,0 +1,59 @@
+{% load sekizai_tags %}
+
+<div class="contact-widget">
+
+    <div class="contact-form-result"></div>
+
+    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="{% url 'send_email' %}" method="post">
+
+        {% csrf_token %}
+
+        <div class="form-process"></div>
+
+        <div class="col_full">
+            <label for="template-contactform-name">Nome <small>*</small></label>
+            {{form.name}}
+        </div>
+
+        <div class="col_two_third">
+            <label for="template-contactform-email">Email <small>*</small></label>
+            {{form.email}}
+        </div>
+
+        <div class="col_one_third col_last">
+            <label for="template-contactform-phone">Telefone</label>
+            {{form.phone}}
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="col_full">
+            <label for="template-contactform-subject">Assunto <small>*</small></label>
+            {{form.subject}}
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="col_full">
+            <label for="template-contactform-message">Mensagem <small>*</small></label>
+            {{form.message}}
+        </div>
+
+        <div class="col_full hidden">
+            <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+        </div>
+
+        <div class="col_full">
+            <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Enviar mensagem</button>
+        </div>
+
+    </form>
+</div>
+
+{% addtoblock "css" %}
+    {{ form.media.css }}
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    {{ form.media.js }}
+{% endaddtoblock %}
