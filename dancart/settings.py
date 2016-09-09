@@ -166,6 +166,7 @@ CMS_LANGUAGES = {
 CMS_TEMPLATES = (
     ## Customize this
     ('home.html', 'Home'),
+    ('contact.html', 'Contact Page'),
 )
 
 CMS_PERMISSION = True
