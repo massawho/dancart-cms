@@ -11,7 +11,7 @@ def send_email(request):
             try:
                 message = "Telefone: %s \n\n Mensagem: %s" % (data['phone'], data['message'])
                 send_mail('Contato pelo site', message, "%s <%s>" % (data['name'], data['email']),
-                          ['contato@lojadancart.com.br'],
+                          ['dancart.loja@gmail.com'],
                           fail_silently=False)
                 return JsonResponse({'alert':'success', 'message':'Mensagem enviada com sucesso.'})
             except Exception:
